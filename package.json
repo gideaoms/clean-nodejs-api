@@ -1,0 +1,62 @@
+{
+  "name": "clean-code-nodejs-api",
+  "version": "1.0.0",
+  "description": "Clean Code NodeJS API",
+  "main": "src/start/server.ts",
+  "scripts": {
+    "lint": "eslint src --max-warnings=0",
+    "test": "jest",
+    "dev:server": "nodemon src/start/server.ts",
+    "dev:compose": "docker-compose -f docker-compose.dev.yml"
+  },
+  "keywords": [
+    "Clean",
+    "API",
+    "NodeJS"
+  ],
+  "author": "Gideao Silva <gideaoms@gmail.com>",
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-typescript": "^7.12.7",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/jest": "^26.0.16",
+    "@types/koa": "^2.11.6",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.1",
+    "@types/yup": "^0.29.10",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "commitizen": "^4.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "husky": "^5.0.4",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.2",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@sentry/node": "^5.28.0",
+    "knex": "^0.21.12",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^10.0.0",
+    "pg": "^8.5.1",
+    "yup": "^0.32.1"
+  }
+}

@@ -1,0 +1,51 @@
+version: '3.7'
+
+volumes:
+  vol_postgres:
+  vol_pgadmin:
+
+services:
+  api:
+    container_name: cleannodejsapi_api
+    image: bitnami/node:14.15.1
+    env_file:
+      - .env
+    command: npm run dev:server
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    working_dir: /usr/app
+    volumes:
+      - .:/usr/app
+    depends_on:
+      - postgres
+    tty: true
+
+  postgres:
+    container_name: cleannodejsapi_postgres
+    image: bitnami/postgresql:12.5.0
+    env_file:
+      - .env
+    environment:
+      POSTGRESQL_USERNAME: ${DB_USER}
+      POSTGRESQL_PASSWORD: ${DB_PASS}
+      POSTGRESQL_DATABASE: ${DB_NAME}
+    volumes:
+      - vol_postgres:/bitnami/postgresql
+      - ./db.sh:/docker-entrypoint-initdb.d/db.sh:ro
+
+  pgadmin:
+    container_name: cleannodejsapi_pgadmin
+    image: dpage/pgadmin4:4.29
+    env_file:
+      - .env
+    ports:
+      - ${PGADMIN_PORT}:80
+    logging:
+      driver: none
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_MAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASS}
+    volumes:
+      - vol_pgadmin:/var/lib/pgadmin
+    depends_on:
+      - postgres

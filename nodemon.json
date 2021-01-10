@@ -1,0 +1,6 @@
+{
+  "watch": ["src"],
+  "execMap": {
+    "ts": "node --require ts-node/register/transpile-only"
+  }
+}
